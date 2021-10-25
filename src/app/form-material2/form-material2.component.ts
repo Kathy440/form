@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  Validators,
-  FormBuilder,
-  FormGroup,
-  FormControl
-} from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-form-material2',

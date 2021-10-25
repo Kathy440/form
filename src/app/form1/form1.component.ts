@@ -16,7 +16,12 @@ export class Form1Component implements OnInit {
     this.createForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('fd', localStorage.getItem('formdata'));
+
+    console.log(this.form.controls);
+    localStorage.getItem('formdata');
+  }
 
   form = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -26,10 +31,6 @@ export class Form1Component implements OnInit {
 
   get f() {
     return this.form.controls;
-  }
-
-  submit() {
-    console.log(this.form.value);
   }
 
   angForm: FormGroup;

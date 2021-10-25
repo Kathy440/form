@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormMaterialComponent } from './form-material.component';
+import { CatFormComponent } from './cat-form.component';
 
-describe('FormMaterialComponent', () => {
-  let component: FormMaterialComponent;
-  let fixture: ComponentFixture<FormMaterialComponent>;
+describe('CatFormComponent', () => {
+  let component: CatFormComponent;
+  let fixture: ComponentFixture<CatFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormMaterialComponent ]
+      declarations: [ CatFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormMaterialComponent);
+    fixture = TestBed.createComponent(CatFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

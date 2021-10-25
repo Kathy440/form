@@ -2,26 +2,18 @@
     <h1>
         ddx
     </h1>
-    <form [formGroup]="angForm" novalidate>
+    <form [formGroup]="angForm">
         <div class="form-group">
             <label>Name:</label>
-            <input class="form-control" formControlName="name" type="text">
+            <input class="form-control" type="text" formControlName="name" [(ngModel)]="angForm.value.name">
         </div>
-        <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
-            <div *ngIf="angForm.controls['name'].errors.required">
-                Name is required.
-            </div>
-        </div>
+
         <div class="form-group">
             <label>Address:</label>
             <input class="form-control" formControlName="address" type="text">
         </div>
-        <div *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)" class="alert alert-danger">
-            <div *ngIf="angForm.controls['address'].errors.required">
-                email is required.
-            </div>
-        </div>
-        <button type="submit" (click)="saveForm()" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success">
+
+        <button type="submit" (click)="saveForm()" class="btn btn-success">
             Save
         </button>
     </form>

@@ -5,9 +5,7 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { Form1Component } from './form1/form1.component';
-import { Form2Component } from './form2/form2.component';
 import { Routes, RouterModule } from '@angular/router';
-import { FormMaterialComponent } from './form-material/form-material.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
@@ -19,12 +17,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
+import { CatFormComponent } from './cat-form/cat-form.component';
 
 const routes: Routes = [
   { path: 'form1', component: Form1Component },
-  { path: 'form2', component: Form2Component },
   { path: '', component: HomeComponent },
-  { path: 'formMaterial', component: FormMaterialComponent },
+  { path: 'cat', component: CatFormComponent },
   { path: 'formMaterial2', component: FormMaterial2Component }
 ];
 
@@ -33,10 +31,9 @@ const routes: Routes = [
     AppComponent,
     HeaderComponent,
     Form1Component,
-    Form2Component,
-    FormMaterialComponent,
     HomeComponent,
-    FormMaterial2Component
+    FormMaterial2Component,
+    CatFormComponent
   ],
   imports: [
     BrowserModule,
