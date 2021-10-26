@@ -18,19 +18,6 @@ export class Form1Component implements OnInit {
 
   ngOnInit(): void {
     console.log('fd', localStorage.getItem('formdata'));
-
-    console.log(this.form.controls);
-    localStorage.getItem('formdata');
-  }
-
-  form = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    body: new FormControl('', Validators.required)
-  });
-
-  get f() {
-    return this.form.controls;
   }
 
   angForm: FormGroup;
