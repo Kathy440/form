@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cat } from '../model/cat';
+import { FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-cat-form',
@@ -12,6 +13,9 @@ export class CatFormComponent implements OnInit {
   cats: Cat[] = [];
 
   newCat: Cat = new Cat();
+
+  catToUpdtate = {};
+
   ngOnInit(): void {
     if (localStorage.getItem('cats') != null) {
       this.cats = JSON.parse(localStorage.getItem('cats'));

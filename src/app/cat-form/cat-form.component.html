@@ -1,9 +1,9 @@
 <h1>Form</h1>
 
 <form (submit)="addCat()">
-    <input type="text" name="cat_name" [(ngModel)]="newCat.name" placeholder="Name of pet">
-    <input type="number" name="cat_age" [(ngModel)]="newCat.age" placeholder="Age of pet">
-    <input type="text" name="cat_color" [(ngModel)]="newCat.color" placeholder="Color of pet">
+    <input type="text" #name name="name" [(ngModel)]="newCat.name" placeholder="Name of pet"> {{name.value}}
+    <input type="number" name="age" [(ngModel)]="newCat.age" placeholder="Age of pet">
+    <input type="text" name="color" [(ngModel)]="newCat.color" placeholder="Color of pet">
 
     <input type="submit" value="Add">
 </form>
@@ -12,3 +12,5 @@
 <div *ngFor="let cat of cats">
     <p>{{cat.name}} | {{cat.age}} | {{cat.color}}</p>
 </div>
+
+<hr>

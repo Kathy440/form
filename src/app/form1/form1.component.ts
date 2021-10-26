@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  Validators,
-  FormGroup,
-  FormBuilder
-} from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-form1',
@@ -12,26 +7,29 @@ import {
   styleUrls: ['./form1.component.scss']
 })
 export class Form1Component implements OnInit {
-  constructor(private fb: FormBuilder) {
-    this.createForm();
-  }
-
-  ngOnInit(): void {
-    console.log('fd', localStorage.getItem('formdata'));
-  }
+  constructor(private fb: FormBuilder) {}
 
   angForm: FormGroup;
 
-  createForm() {
+  ngOnInit(): void {
+    // 1 - Recup valeur dans le local storage
+    const value = JSON.parse(localStorage.getItem('angFormData'));
+    // 2 - Cree le form avec les valeurs du formulaire
     this.angForm = this.fb.group({
-      name: ['', Validators.required],
-      address: ['', Validators.required]
+      name: [value && value.name],
+      address: [value && value.address]
     });
-  }
-  saveForm() {
-    if (this.angForm.valid) {
-      console.log('Profile form data : ', this.angForm.value);
-      localStorage.setItem('formdata', JSON.stringify(this.angForm.value));
-    }
+
+    console.log(this.angForm);
+
+    // 3 - Met a jour le  local storage on every modification
+    //on utilise un observable pr qu'a fois quand la valeur change
+    this.angForm.valueChanges.subscribe(value => {
+      localStorage.setItem('angFormData', JSON.stringify(this.angForm.value));
+      console.log(
+        'ss',
+        localStorage.setItem('angFormData', JSON.stringify(this.angForm.value))
+      );
+    });
   }
 }

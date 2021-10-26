@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  Validators
+} from '@angular/forms';
 
 @Component({
   selector: 'app-form-material2',
@@ -9,38 +14,27 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 export class FormMaterial2Component implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
-  form: FormGroup;
-  myid!: any;
   profileForm: any;
 
   ngOnInit(): void {
-    this.profileForm = new FormGroup({
-      firstName: new FormControl(),
-      lastName: new FormControl(),
-      address: new FormControl(),
-      dob: new FormControl(),
-      gender: new FormControl()
+    const value = JSON.parse(localStorage.getItem('profilFormData'));
+    this.profileForm = this.formBuilder.group({
+      firstName: [value && value.firstName],
+      lastName: [value && value.lastName],
+      address: [value && value.address],
+      dob: [value && value.dob],
+      gender: [value && value.gender]
     });
-    this.display();
-  }
-
-  /* profileForm = this.formBuilder.group({
-    firstName: ['', [Validators.required]],
-    lastName: ['', [Validators.required]],
-    address: ['', [Validators.required]],
-    dob: ['', [Validators.required]],
-    gender: ['', [Validators.required]]
-  }); */
-
-  display() {
-    this.myid = localStorage.getItem('formdata');
-    console.log('x', this.myid);
   }
 
   saveForm() {
-    if (this.profileForm.valid) {
-      console.log('Profile form data : ', this.profileForm.value);
-      localStorage.setItem('formdata', JSON.stringify(this.profileForm.value));
-    }
+    const value = JSON.parse(localStorage.getItem('profilFormData'));
+
+    this.profileForm.valueChanges.subscribe(value => {
+      localStorage.setItem(
+        'profilFormData',
+        JSON.stringify(this.profileForm.value)
+      );
+    });
   }
 }
