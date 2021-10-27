@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  FormControl,
-  Validators
-} from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { LocalStorageService } from '../service/localStorage.service';
 
 @Component({
   selector: 'app-form-material2',
@@ -12,12 +8,15 @@ import {
   styleUrls: ['./form-material2.component.scss']
 })
 export class FormMaterial2Component implements OnInit {
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private localStorageService: LocalStorageService
+  ) {}
 
   profileForm: any;
 
-  ngOnInit(): void {
-    const value = JSON.parse(localStorage.getItem('profilFormData'));
+  ngOnInit() {
+    const value = this.localStorageService.getData('profilFormData');
     this.profileForm = this.formBuilder.group({
       firstName: [value && value.firstName],
       lastName: [value && value.lastName],
@@ -25,15 +24,15 @@ export class FormMaterial2Component implements OnInit {
       dob: [value && value.dob],
       gender: [value && value.gender]
     });
+    this.saveForm();
   }
 
   saveForm() {
-    const value = JSON.parse(localStorage.getItem('profilFormData'));
-
+    const value = this.localStorageService.getData('profilFormData');
     this.profileForm.valueChanges.subscribe(value => {
-      localStorage.setItem(
+      this.localStorageService.setData(
         'profilFormData',
-        JSON.stringify(this.profileForm.value)
+        this.profileForm.value
       );
     });
   }
