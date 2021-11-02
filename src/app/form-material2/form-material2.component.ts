@@ -36,4 +36,8 @@ export class FormMaterial2Component implements OnInit {
       );
     });
   }
+
+  /* storeVal(num: number): void {
+    this.store.dispatch(storeCounter({ val: num }));
+  } */
 }

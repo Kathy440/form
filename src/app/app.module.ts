@@ -18,12 +18,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { CatFormComponent } from './cat-form/cat-form.component';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './reducers/tutorial.reducer';
+import { ReadComponent } from './read/read.component';
+import { CreateComponent } from './create/create.component';
 
 const routes: Routes = [
   { path: 'form1', component: Form1Component },
   { path: '', component: HomeComponent },
   { path: 'cat', component: CatFormComponent },
-  { path: 'formMaterial2', component: FormMaterial2Component }
+  { path: 'formMaterial2', component: FormMaterial2Component },
+  { path: 'ngrx', component: ReadComponent }
 ];
 
 @NgModule({
@@ -33,7 +38,9 @@ const routes: Routes = [
     Form1Component,
     HomeComponent,
     FormMaterial2Component,
-    CatFormComponent
+    CatFormComponent,
+    ReadComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +56,10 @@ const routes: Routes = [
     MatDatepickerModule,
     MatCardModule,
     MatNativeDateModule,
-    MatButtonModule
+    MatButtonModule,
+    StoreModule.forRoot({
+      tutorial: reducer
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
