@@ -31,8 +31,3 @@ export class UpdateTutorial implements Action {
 
 // Section 4 -> exportons toutes nos classes d'action pour une utilisation dans le reducer
 export type Actions = AddTutorial | RemoveTutorial | UpdateTutorial;
-
-export const storeCounter = createAction(
-  '[Counter] Store Counter',
-  props<{ val: number }>()
-);

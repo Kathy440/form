@@ -1,7 +1,7 @@
 export class Profil {
-  firstName: string;
-  lastName: string;
-  address: string;
-  dob: string;
-  gender: string;
+  constructor(
+    public firstName: string,
+    public lastName: string,
+    public address: string
+  ) {}
 }

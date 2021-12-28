@@ -2,7 +2,7 @@
     <h1>
         ddx
     </h1>
-    <form [formGroup]="angForm">
+    <form [formGroup]="angForm" (ngSubmit)="saveForm()">
         <div class="form-group">
             <label>Name:</label>
             <input class="form-control" type="text" formControlName="name">
